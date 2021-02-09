@@ -5,8 +5,13 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IBrandService: IServiceRepository<Brand>
+    public interface IBrandService
     {
-       
+        void Add(Brand entity);
+        void Update(Brand entity);
+        void Delete(Brand entity);
+        List<Brand> GetAll();
+        Brand GetById(int id);
+
     }
 }
