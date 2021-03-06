@@ -15,10 +15,3 @@ namespace Core.DataAccess
         void Delete(T entity);
     }
 }
-
-namespace Core
-{
-    public interface IDto
-    {
-    }
-}

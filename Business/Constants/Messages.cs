@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -11,5 +13,8 @@ namespace Business.Constants
         public static string InvalidProductNameOrPrice = "This is not valid price or name";
         public static string ReturnDateIsNull = "You can not rent this car";
         public  static string ReturnDateIsNotNull="You can rent this car";
+        public static string EmailNotExist="write your correct email";
+
+        public static string AuthorizationDenied = "AuthorizationDenied";
     }
 }
