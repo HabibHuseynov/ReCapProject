@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryCarDal:ICarDal
+    public class InMemoryCarDal//ICarDal
     {
         List<Car> _car;
         public InMemoryCarDal()
@@ -61,6 +61,16 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarDetails(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarDetailsByColorAndBrandId(int brandId, int colorId)
         {
             throw new NotImplementedException();
         }

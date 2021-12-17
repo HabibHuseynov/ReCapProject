@@ -35,6 +35,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result.Message);
         }
+        [HttpPost("login")]
         public IActionResult Login(UserForLoginDto userForLoginDto)
         {
             var loginResult = _authService.Login(userForLoginDto);

@@ -16,7 +16,8 @@ namespace Core.Utilities.Helpers
                 {
                     Directory.CreateDirectory(sourcePath);
                 }
-                var result = sourcePath + NewPath(file);
+                var newPath = NewPath(file);
+                var result = sourcePath + newPath;
 
 
                 using (FileStream stream = System.IO.File.Create(result))
@@ -27,9 +28,9 @@ namespace Core.Utilities.Helpers
 
 
 
-                return result;
+                return newPath ;
             }
-            return sourcePath + "default.jpg";
+            return  "default.jpg";
             
 
 

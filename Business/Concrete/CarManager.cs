@@ -25,6 +25,7 @@ namespace Business.Concrete
             _carDal = carDal;
         }
         [SecuredOperations("admin")]
+
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car entity)
         {
@@ -39,15 +40,15 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedItem);
         }
         [CacheAspect]
-        public IDataResult<List<Car>> GetAll()
+        public IDataResult<List<CarDetailDto>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
 
         }
 
-        public IDataResult<Car> GetById(int id)
+        public IDataResult<List<CarDetailDto>> GetById(int id)
         {
-            return  new SuccessDataResult<Car>(_carDal.GetById(c => c.Id == id));
+            return  new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.Id == id));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
@@ -55,19 +56,24 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandandColorId(int brandId, int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByColorAndBrandId(brandId, colorId));
         }
 
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.BrandId == id));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsByColorId(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ColorId == id));
         }
 
         public IResult Update(Car entity)
         {
-            if (entity.Name.Length < 2 && entity.DailyPrice == 0) 
+            if(entity.DailyPrice == 0) 
             {
                 return new ErrorResult("This is not valid price or name");
             }

@@ -56,6 +56,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<CarImage>(_carImageDal.GetById(c=>c.Id==id));
         }
+        
 
         public IResult Update(IFormFile file,CarImage carImage)
         {
@@ -64,6 +65,10 @@ namespace Business.Concrete
             _carImageDal.Update(carImage);
             return new SuccessResult();
             
+        }
+        public IDataResult<List<CarImage>> GetByCarId(int carId)
+        {
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId));
         }
 
         private IResult CheckIfLimitOfCarImage(int carId)

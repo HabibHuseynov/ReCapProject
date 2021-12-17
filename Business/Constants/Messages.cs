@@ -14,7 +14,8 @@ namespace Business.Constants
         public static string ReturnDateIsNull = "You can not rent this car";
         public  static string ReturnDateIsNotNull="You can rent this car";
         public static string EmailNotExist="write your correct email";
-
+        public static string Created = "Item created";
+        public static string Success = "this process is success";
         public static string AuthorizationDenied = "AuthorizationDenied";
     }
 }
